@@ -1,0 +1,189 @@
+{
+  "contractName": "Stakable",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Stakable.sol\":\"Stakable\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Stakable.sol\":{\"keccak256\":\"0x28ef7a161efcb0cd9066884ce56c2548f4d9e7246dfb4f46406d27d340278c2f\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://1d422a1cf5032bbceba508248b8b7127dd7d067313221a1debce18d8e8f94b09\",\"dweb:/ipfs/QmPkDwq8RkxQ5KdLkSwENn6reqcLC5wnbVjyDbAeXVnZvs\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220fc6af6089e2670e9bee683da7233a8904a3fcca69f72ca138ead0f27b8171a9b64736f6c63430008040033",
+  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220fc6af6089e2670e9bee683da7233a8904a3fcca69f72ca138ead0f27b8171a9b64736f6c63430008040033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "57:44:2:-:0;;;79:20;;;;;;;;;;57:44;;;;;;",
+  "deployedSourceMap": "57:44:2:-:0;;;;;",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.4;\n\ncontract Stakable {\n  constructor() {\n\n  }\n}\n",
+  "sourcePath": "/Users/kieranwilliams/Programming/solidity/BEP-Tut/contracts/Stakable.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/Stakable.sol",
+    "exportedSymbols": {
+      "Stakable": [
+        647
+      ]
+    },
+    "id": 648,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 642,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".4"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:2"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 647,
+        "linearizedBaseContracts": [
+          647
+        ],
+        "name": "Stakable",
+        "nameLocation": "66:8:2",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 645,
+              "nodeType": "Block",
+              "src": "93:6:2",
+              "statements": []
+            },
+            "id": 646,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nameLocation": "-1:-1:-1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 643,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "90:2:2"
+            },
+            "returnParameters": {
+              "id": 644,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "93:0:2"
+            },
+            "scope": 647,
+            "src": "79:20:2",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 648,
+        "src": "57:44:2",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:70:2"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/Stakable.sol",
+    "exportedSymbols": {
+      "Stakable": [
+        647
+      ]
+    },
+    "id": 648,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 642,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".4"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:2"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 647,
+        "linearizedBaseContracts": [
+          647
+        ],
+        "name": "Stakable",
+        "nameLocation": "66:8:2",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 645,
+              "nodeType": "Block",
+              "src": "93:6:2",
+              "statements": []
+            },
+            "id": 646,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nameLocation": "-1:-1:-1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 643,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "90:2:2"
+            },
+            "returnParameters": {
+              "id": 644,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "93:0:2"
+            },
+            "scope": 647,
+            "src": "79:20:2",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 648,
+        "src": "57:44:2",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:70:2"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.4+commit.c7e474f2.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.2",
+  "updatedAt": "2021-08-08T21:06:49.746Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
