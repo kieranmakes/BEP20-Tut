@@ -17,7 +17,9 @@ contract Stakable {
     Stake[] address_stakes;
   }
 
+  // array of all stakeholders
   Stakeholder[] internal stakeholders;
+  // 'stakes' contains the indexs of 'stakeholders' for the accounts that have a stake
   mapping (address => uint256) internal stakes;
   event Staked(address indexed user, uint256 amount, uint256 index, uint256 timestamp);
 
@@ -30,4 +32,17 @@ contract Stakable {
     stakes[staker] = userIndex;
     return userIndex;
   }
+
+  function _stake(uint256 _amount) internal {
+    require(_amount > 0, "Cannot Stake nothing");
+    uint256 index = stakes[msg.sender];
+    uint256 timestamp = block.timestamp;
+    if (index == 0){
+      index = _addStakeholder(msg.sender);
+    }
+    stakeholders[index].address_stakes.push(Stake(msg.sender, _amount, timestamp));
+    emit Staked(msg.sender, _amount, index, timestamp);
+  }
+
+
 }

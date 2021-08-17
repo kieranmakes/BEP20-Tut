@@ -121,6 +121,12 @@ contract DevToken is Ownable, Stakable {
     return true;
   }
 
+  function stake (uint256 _amount) public {
+    require(_amount < _balances[msg.sender], "DevToken: Cannot stake more than you own");
+    _stake(_amount);
+    _burn(msg.sender, _amount);
+  }
+
 
 }
 
