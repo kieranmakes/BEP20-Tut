@@ -38,6 +38,17 @@ contract("DevToken", async (accounts) => {
       },
       "Stake event should have triggered"
     );
+
+    stakeID = await devToken.stake(stake_amount, { from: owner });
+    truffleAssert.eventEmitted(stakeID, "Staked", (ev) => {
+      let amount = new BigNumber(ev.amount.toString());
+      let index = new BigNumber(ev.index.toString());
+      assert.equal(
+        amount.toString(),
+        stake_amount.toString(),
+        "Stake amount in event was not correct"
+      );
+    });
   });
 
   it("cannot stake more than owning", async () => {
@@ -47,4 +58,6 @@ contract("DevToken", async (accounts) => {
       assert.equal(error.reason, "DevToken: Cannot stake more than you own");
     }
   });
+
+  it();
 });
