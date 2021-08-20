@@ -38,18 +38,18 @@
       "type": "event"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"Staked\",\"type\":\"event\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/tantrwm-mac-mini-02/Programming/solidity/BEP20-Tut/contracts/Stakable.sol\":\"Stakable\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/tantrwm-mac-mini-02/Programming/solidity/BEP20-Tut/contracts/Stakable.sol\":{\"keccak256\":\"0xb63da46f6cf7b9bbe9cab816b97ab52bd0dde403ecdd6b4ce7b951f73de5d10b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://23437cdc206364580124f974f6fad58003b70155983a011ce7e9628d0bd378f5\",\"dweb:/ipfs/QmW61wcun26CRhYx936C9wguZiuU7NeHr7mQwDnH9ABjcY\"]}},\"version\":1}",
-  "bytecode": "0x6080604052348015600f57600080fd5b50600060018160018154018082558091505003906000526020600020905050603f80603b6000396000f3fe6080604052600080fdfea2646970667358221220dca3485f79e94de5a9697d7ae5b1e290812970e9b013f679c82a9efc011ac54564736f6c63430008040033",
-  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220dca3485f79e94de5a9697d7ae5b1e290812970e9b013f679c82a9efc011ac54564736f6c63430008040033",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"Staked\",\"type\":\"event\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Stakable.sol\":\"Stakable\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Stakable.sol\":{\"keccak256\":\"0xb63da46f6cf7b9bbe9cab816b97ab52bd0dde403ecdd6b4ce7b951f73de5d10b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://23437cdc206364580124f974f6fad58003b70155983a011ce7e9628d0bd378f5\",\"dweb:/ipfs/QmW61wcun26CRhYx936C9wguZiuU7NeHr7mQwDnH9ABjcY\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50600060018160018154018082558091505003906000526020600020905050603f80603b6000396000f3fe6080604052600080fdfea2646970667358221220cc9faddadd7b0d6d1e5818a6adb9cafb01be9e7d1e5a34c0f4b658b5d0cd85f364736f6c63430008040033",
+  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220cc9faddadd7b0d6d1e5818a6adb9cafb01be9e7d1e5a34c0f4b658b5d0cd85f364736f6c63430008040033",
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
   "sourceMap": "57:1246:2:-:0;;;79:44;;;;;;;;;;99:12;:19;;;;;;;;;;;;;;;;;;;;;;;57:1246;;;;;;",
   "deployedSourceMap": "57:1246:2:-:0;;;;;",
   "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.4;\n\ncontract Stakable {\n  constructor() {\n    stakeholders.push();\n  }\n\n  struct Stake{\n    address user;\n    uint256 amount;\n    uint256 since;\n  }\n\n  struct Stakeholder {\n    address user;\n    Stake[] address_stakes;\n  }\n\n  // array of all stakeholders\n  Stakeholder[] internal stakeholders;\n  // 'stakes' contains the indexs of 'stakeholders' for the accounts that have a stake\n  mapping (address => uint256) internal stakes;\n  event Staked(address indexed user, uint256 amount, uint256 index, uint256 timestamp);\n\n\n  // @notice _addStakeholder takes care of adding a stakeholder to the stakeholders array\n  function _addStakeholder(address staker) internal returns (uint256){\n    stakeholders.push();\n    uint256 userIndex = stakeholders.length - 1;\n    stakeholders[userIndex].user = staker;\n    stakes[staker] = userIndex;\n    return userIndex;\n  }\n\n  function _stake(uint256 _amount) internal {\n    require(_amount > 0, \"Cannot Stake nothing\");\n    uint256 index = stakes[msg.sender];\n    uint256 timestamp = block.timestamp;\n    if (index == 0){\n      index = _addStakeholder(msg.sender);\n    }\n    stakeholders[index].address_stakes.push(Stake(msg.sender, _amount, timestamp));\n    emit Staked(msg.sender, _amount, index, timestamp);\n  }\n\n\n}\n",
-  "sourcePath": "/Users/tantrwm-mac-mini-02/Programming/solidity/BEP20-Tut/contracts/Stakable.sol",
+  "sourcePath": "/Users/kieranwilliams/Programming/solidity/BEP-Tut/contracts/Stakable.sol",
   "ast": {
-    "absolutePath": "/Users/tantrwm-mac-mini-02/Programming/solidity/BEP20-Tut/contracts/Stakable.sol",
+    "absolutePath": "project:/contracts/Stakable.sol",
     "exportedSymbols": {
       "Stakable": [
         803
@@ -1751,7 +1751,7 @@
     "src": "32:1272:2"
   },
   "legacyAST": {
-    "absolutePath": "/Users/tantrwm-mac-mini-02/Programming/solidity/BEP20-Tut/contracts/Stakable.sol",
+    "absolutePath": "project:/contracts/Stakable.sol",
     "exportedSymbols": {
       "Stakable": [
         803
@@ -3457,8 +3457,8 @@
     "version": "0.8.4+commit.c7e474f2.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.4.1",
-  "updatedAt": "2021-08-20T10:21:29.047Z",
+  "schemaVersion": "3.4.2",
+  "updatedAt": "2021-08-20T21:31:45.394Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

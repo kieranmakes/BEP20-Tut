@@ -65,15 +65,21 @@ contract("DevToken", async (accounts) => {
   it("new stakeholder should have increased index", async () => {
     let stake_amount = 100;
     stakeID = await devToken.stake(stake_amount, { from: accounts[1] });
-    truffleAssert.eventEmitted(stakeID, "Staked", (ev) => {
-      let amount = new BigNumber(ev.amount.toString());
-      let index = new BigNumber(ev.index.toString());
-      assert.equal(
-        stake_amount.toString(),
-        amount.toString(),
-        "Stake amount in the event was not correct"
-      );
-      assert.equal(index.toString(), "2", "Stake index was not correct");
-    });
+    truffleAssert.eventEmitted(
+      stakeID,
+      "Staked",
+      (ev) => {
+        let amount = new BigNumber(ev.amount.toString());
+        let index = new BigNumber(ev.index.toString());
+        assert.equal(
+          stake_amount.toString(),
+          amount.toString(),
+          "Stake amount in the event was not correct"
+        );
+        assert.equal(index.toString(), "2", "Stake index was not correct");
+        return true;
+      },
+      "Stake event should have triggered"
+    );
   });
 });
