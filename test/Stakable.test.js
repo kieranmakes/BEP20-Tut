@@ -48,6 +48,7 @@ contract("DevToken", async (accounts) => {
         stake_amount.toString(),
         "Stake amount in event was not correct"
       );
+      assert.equal(index.toString(), "1", "Stake index was not correct");
     });
   });
 
