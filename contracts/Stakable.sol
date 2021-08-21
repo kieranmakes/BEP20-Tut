@@ -77,7 +77,7 @@ contract Stakable {
       // set new values
       stakeholders[user_index].address_stakes[index].amount = current_stake.amount;
       // reset timer of stake
-      stakeholders[user_index].address_stakes[index].since = block.timestamp
+      stakeholders[user_index].address_stakes[index].since = block.timestamp;
     }
     return amount+reward;
   }

@@ -129,7 +129,7 @@ contract DevToken is Ownable, Stakable {
 
   function withdrawStake(uint256 amount, uint256 stake_index) public {
     uint256 amount_to_mint = _withdrawStake(amount, stake_index);
-    _mint(msg.sender, amount_to_mint)
+    _mint(msg.sender, amount_to_mint);
   }
 
 }
